@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://duxx0b3bhq1u7"]
+
+[sub_resource type="Gradient" id="Gradient_6kkk0"]
+offsets = PackedFloat32Array(0, 0.149254, 0.813433, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.149254, 0.149254, 0.149254, 1, 0.897801, 0.820173, 0.748217, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5hk40"]
+gradient = SubResource("Gradient_6kkk0")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wt5gc"]
+sky_top_color = Color(0.66751, 0.762311, 0.736845, 1)
+sky_horizon_color = Color(0.716877, 0.732828, 0.717461, 1)
+ground_horizon_color = Color(0.716877, 0.732828, 0.717461, 1)
+
+[sub_resource type="Sky" id="Sky_55r1q"]
+sky_material = SubResource("ProceduralSkyMaterial_wt5gc")
+
+[sub_resource type="Environment" id="Environment_ay3ka"]
+background_mode = 2
+sky = SubResource("Sky_55r1q")
+tonemap_mode = 3
+tonemap_exposure = 1.5
+tonemap_white = 5.0
+ssao_enabled = true
+glow_enabled = true
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_5hk40")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_56ona"]
+size = Vector2(30, 30)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1nm2h"]
+points = PackedVector3Array(-15, 0, -15, -15, 0, 15, 15, 0, -15, 15, 0, 15)
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ay3ka")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.939693, 0.156867, -0.303925, 0, 0.888617, 0.45865, 0.34202, -0.43099, 0.835027, 0, 5.37863, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_56ona")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_1nm2h")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8248, 0)
