@@ -1,8 +1,5 @@
 extends Area3D
 
-signal robot_collected
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#connect("body_entered", self, "_on_body_entered") # Replace with function body.
