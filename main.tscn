@@ -1,4 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://duxx0b3bhq1u7"]
+[gd_scene load_steps=42 format=3 uid="uid://duxx0b3bhq1u7"]
+
+[ext_resource type="PackedScene" uid="uid://bomplpjjq04r4" path="res://player.tscn" id="1_n0yox"]
+[ext_resource type="Script" path="res://player.gd" id="1_r1ofy"]
+[ext_resource type="PackedScene" uid="uid://dd02ev2hh1s62" path="res://models/structure-wall.glb" id="3_bcn13"]
+[ext_resource type="PackedScene" uid="uid://b8kpaca2pk8rk" path="res://models/box-large.glb" id="4_ig4cj"]
+[ext_resource type="PackedScene" uid="uid://cvnikynmc4q7v" path="res://robot_arm_b_2.tscn" id="4_owoxl"]
+[ext_resource type="PackedScene" uid="uid://jfgvyvu231h8" path="res://robot1.tscn" id="4_prwva"]
+[ext_resource type="PackedScene" uid="uid://kihr1drwbql6" path="res://models/box-long.glb" id="5_1sjtp"]
+[ext_resource type="PackedScene" uid="uid://dpwuw5ijmk1ir" path="res://models/conveyor-bars-fence.glb" id="5_g0gnh"]
+[ext_resource type="PackedScene" uid="uid://bhfb05rxos6x8" path="res://models/door.glb" id="5_uu523"]
+[ext_resource type="PackedScene" uid="uid://kb0nbe52vdtg" path="res://models/structure-corner-outer.glb" id="6_ovn8g"]
+[ext_resource type="PackedScene" uid="uid://bpj81sasmcsgv" path="res://models/box-small.glb" id="6_vm558"]
+[ext_resource type="PackedScene" uid="uid://bqusi67hjyy04" path="res://models/structure-window.glb" id="7_plouj"]
+[ext_resource type="PackedScene" uid="uid://do6b2dtefenra" path="res://models/conveyor-bars-stripe-high.glb" id="9_m1isr"]
+[ext_resource type="PackedScene" uid="uid://b0h1r44vm1chc" path="res://models/box-wide.glb" id="11_o7sd1"]
+[ext_resource type="PackedScene" uid="uid://bxvre23s0qhx3" path="res://models/scanner-high.glb" id="13_gkmsw"]
+[ext_resource type="PackedScene" uid="uid://dwx13qjhamvo2" path="res://models/scanner-low.glb" id="14_4laok"]
+[ext_resource type="PackedScene" uid="uid://bmspscwjsm2ty" path="res://models/conveyor-bars.glb" id="15_4g4j8"]
+[ext_resource type="PackedScene" uid="uid://bbdc371n0tdvl" path="res://models/conveyor-long-stripe-sides.glb" id="16_v3676"]
+[ext_resource type="PackedScene" uid="uid://qpbiq5sc5ut5" path="res://models/conveyor-stripe.glb" id="17_3vr5y"]
+[ext_resource type="PackedScene" uid="uid://ujitetgskkc6" path="res://models/conveyor-long.glb" id="18_wqvtm"]
+[ext_resource type="PackedScene" uid="uid://ciiw5i5e8o6gu" path="res://models/cover-stripe-hopper.glb" id="21_qxt2x"]
+[ext_resource type="PackedScene" uid="uid://ycr1qek4r4hi" path="res://models/cover-bar.glb" id="22_gdci7"]
+[ext_resource type="PackedScene" uid="uid://co0osrj7u7jul" path="res://models/structure-tall.glb" id="23_7ahgu"]
+[ext_resource type="PackedScene" uid="uid://d6dkv0itneuw" path="res://models/structure-short.glb" id="24_sy1qj"]
+[ext_resource type="PackedScene" uid="uid://btn55w5hjjsaa" path="res://robot.tscn" id="25_lagtu"]
+[ext_resource type="Script" path="res://game_over_screen.gd" id="26_uj2v4"]
+[ext_resource type="AudioStream" uid="uid://d0hou4c2t4x5n" path="res://assets/lounge-jazz-elevator-music-324902.mp3" id="27_cvjpx"]
 
 [sub_resource type="Gradient" id="Gradient_6kkk0"]
 offsets = PackedFloat32Array(0, 0.149254, 0.813433, 1)
@@ -27,7 +55,6 @@ adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_5hk40")
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_inrjj"]
-albedo_color = Color(0.638044, 0.694512, 0.718945, 1)
 normal_enabled = true
 normal_scale = -16.0
 
@@ -37,6 +64,20 @@ size = Vector2(30, 30)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1nm2h"]
 points = PackedVector3Array(-15, 0, -15, -15, 0, 15, 15, 0, -15, 15, 0, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5kawa"]
+size = Vector3(1, 0.8, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ke0sc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmlmq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0n2sx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_foe35"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j7jp"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node3D"]
 
@@ -55,6 +96,290 @@ mesh = SubResource("PlaneMesh_56ona")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_1nm2h")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
-fov = 60.0
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_r1ofy")
+
+[node name="player" parent="CharacterBody3D" instance=ExtResource("1_n0yox")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.05)
+shape = SubResource("BoxShape3D_5kawa")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
+
+[node name="Robot arms" type="Node3D" parent="."]
+
+[node name="robot-arm-a2" parent="Robot arms" instance=ExtResource("4_prwva")]
+transform = Transform3D(0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 11.3, 0, -3.8)
+
+[node name="robot-arm-a3" parent="Robot arms" instance=ExtResource("4_prwva")]
+transform = Transform3D(-0.492404, -0.173648, 0.852869, -0.0868241, 0.984808, 0.150384, -0.866025, 0, -0.5, 5.8, 0, -7.2)
+
+[node name="robot-arm-b2" parent="Robot arms" instance=ExtResource("4_owoxl")]
+transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, -0.9, 0, 1.27826)
+
+[node name="robot-arm-b3" parent="Robot arms" instance=ExtResource("4_owoxl")]
+transform = Transform3D(-0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, 13.9, 0, -12)
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="structure-wall2" parent="Walls" instance=ExtResource("3_bcn13")]
+transform = Transform3D(10.8624, 0, 0, 0, 1, 0, 0, 0, 0.6, 9.7, -0.1, 0)
+
+[node name="structure-wall3" parent="Walls" instance=ExtResource("3_bcn13")]
+transform = Transform3D(-17.8252, 0, 4.40611e-08, 0, 0.99, 0, -1.55833e-06, 0, -0.504, 6.2, -0.1, -12.9)
+
+[node name="structure-wall4" parent="Walls" instance=ExtResource("3_bcn13")]
+transform = Transform3D(-6.02955e-07, 0, 0.5, 0, 1, 0, -13.794, 0, -2.18557e-08, 14.6, -0.1, -6.3)
+
+[node name="structure-wall5" parent="Walls" instance=ExtResource("3_bcn13")]
+transform = Transform3D(-7.97733e-07, 0, -0.8, 0, 1, 0, 18.25, 0, -3.49691e-08, -1.9, -0.1, -4.9)
+
+[node name="structure-wall6" parent="Walls" instance=ExtResource("3_bcn13")]
+transform = Transform3D(-1.57361e-07, 0, 0.6, 0, 1, 0, -3.6, 0, -2.62268e-08, 3.7, -0.1, 2.5)
+
+[node name="door3" parent="Walls" instance=ExtResource("5_uu523")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38243, 0, 0.289442)
+
+[node name="structure-corner-outer2" parent="Walls" instance=ExtResource("6_ovn8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, -0.1, -0.3)
+
+[node name="structure-window2" parent="Walls" instance=ExtResource("7_plouj")]
+transform = Transform3D(1, 0, 1.31134e-08, 0, 1, 0, -4.37114e-08, 0, 0.3, 1.1, -0.1, 3.6)
+
+[node name="structure-wall7" parent="Walls" instance=ExtResource("3_bcn13")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 0.28, -0.8, -0.1, 3.6)
+
+[node name="structure-wall8" parent="Walls" instance=ExtResource("3_bcn13")]
+transform = Transform3D(2.42, 0, 0, 0, 1, 0, 0, 0, 0.3, 2.8, -0.1, 3.6)
+
+[node name="Boxes" type="Node3D" parent="."]
+
+[node name="box-large2" parent="Boxes" instance=ExtResource("4_ig4cj")]
+transform = Transform3D(0.809489, 0, -0.587136, 0, 1, 0, 0.587136, 0, 0.809489, -0.689691, 0, -7.95074)
+
+[node name="box-small2" parent="Boxes" instance=ExtResource("6_vm558")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.6, 0.3, -9.4)
+
+[node name="box-small3" parent="Boxes" instance=ExtResource("6_vm558")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 2.6, 0, -7.1)
+
+[node name="box-long2" parent="Boxes" instance=ExtResource("5_1sjtp")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 6.8, 0, -4.3)
+
+[node name="box-large3" parent="Boxes" instance=ExtResource("4_ig4cj")]
+transform = Transform3D(0.165059, 0, 0.631476, 0, 0.6, 0, -0.19671, 0, 0.529871, 12.6, 0, -2.2)
+
+[node name="box-small4" parent="Boxes" instance=ExtResource("6_vm558")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3, 0, 0)
+
+[node name="box-small5" parent="Boxes" instance=ExtResource("6_vm558")]
+transform = Transform3D(0.45, 0, 0.716025, 0, 0.4, 0, -0.779423, 0, 0.413397, 7.8, 0, -0.8)
+
+[node name="box-wide2" parent="Boxes" instance=ExtResource("11_o7sd1")]
+transform = Transform3D(0.600522, 0, -0.201265, 0, 0.16, 0, 0.715674, 0, 0.168881, 12.8, 0, -2.5)
+
+[node name="box-wide3" parent="Boxes" instance=ExtResource("11_o7sd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4844, 0, 1.1752)
+
+[node name="Conveyers" type="Node3D" parent="."]
+
+[node name="conveyor-bars-fence" parent="Conveyers" instance=ExtResource("5_g0gnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0, -9.4)
+
+[node name="conveyor-bars-fence2" parent="Conveyers" instance=ExtResource("5_g0gnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -9.4)
+
+[node name="conveyor-bars-fence3" parent="Conveyers" instance=ExtResource("5_g0gnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -9.4)
+
+[node name="conveyor-bars-fence4" parent="Conveyers" instance=ExtResource("5_g0gnh")]
+transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 7.60289, 0, -11.4258)
+
+[node name="conveyor-bars-fence5" parent="Conveyers" instance=ExtResource("5_g0gnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0, 2.5)
+
+[node name="conveyor-bars-stripe-high" parent="Conveyers" instance=ExtResource("9_m1isr")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 8.1, 0, -9.5)
+
+[node name="scanner-high2" parent="Conveyers" instance=ExtResource("13_gkmsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.4)
+
+[node name="scanner-low4" parent="Conveyers" instance=ExtResource("14_4laok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4.2)
+
+[node name="scanner-low2" parent="Conveyers" instance=ExtResource("14_4laok")]
+transform = Transform3D(0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 7.0113, 0, -12.3503)
+
+[node name="conveyor-bars2" parent="Conveyers" instance=ExtResource("15_4g4j8")]
+transform = Transform3D(0.394706, 0, -0.560455, 0, 0.6, 0, 0.331197, 0, 0.667924, 5.61827, 0, -12.1158)
+
+[node name="conveyor-bars3" parent="Conveyers" instance=ExtResource("15_4g4j8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -0.3)
+
+[node name="conveyor-bars4" parent="Conveyers" instance=ExtResource("15_4g4j8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -1.3)
+
+[node name="conveyor-long-stripe-sides" parent="Conveyers" instance=ExtResource("16_v3676")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 13.1, 0, -8.8)
+
+[node name="scanner-high3" parent="Conveyers" instance=ExtResource("13_gkmsw")]
+transform = Transform3D(0.321394, 0.383022, 0.866025, -0.766044, 0.642788, 3.67334e-09, -0.55667, -0.663414, 0.5, 6.4, 0, -3.3)
+
+[node name="scanner-low3" parent="Conveyers" instance=ExtResource("14_4laok")]
+transform = Transform3D(0.147601, 0, -1.24067, 0, 1, 0, 0.837087, 0, 0.218763, 10, 0, -1.2)
+
+[node name="conveyor-stripe2" parent="Conveyers" instance=ExtResource("17_3vr5y")]
+transform = Transform3D(1.8, 0, 0, 0, 1, 0, 0, 0, 1, -1.24, -0.02, -4.17)
+
+[node name="conveyor-long2" parent="Conveyers" instance=ExtResource("18_wqvtm")]
+transform = Transform3D(0.128719, 0, 0.657708, 0, 1, 0, -0.73, 0, 0.115972, 12.8, 0.4, -8.5)
+
+[node name="conveyor-bars-stripe-high2" parent="Conveyers" instance=ExtResource("9_m1isr")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 4.4, 0, -12.4)
+
+[node name="conveyor-bars5" parent="Conveyers" instance=ExtResource("15_4g4j8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.4, -12)
+
+[node name="cover-stripe-hopper2" parent="Conveyers" instance=ExtResource("21_qxt2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0854, 0.0477372, -8.35641)
+
+[node name="cover-bar2" parent="Conveyers" instance=ExtResource("22_gdci7")]
+transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1.4, -1.7, 0, -9.5)
+
+[node name="Ceiling" type="Node3D" parent="."]
+
+[node name="Mesh1" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(9.1476, 0, 0, 0, 1, 0, 0, 0, 7.38, 6, 3.1, -6)
+mesh = SubResource("PlaneMesh_ke0sc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dmlmq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ceiling/Mesh1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0360751, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling/Mesh1/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_1nm2h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(3.48, 0, 0, 0, 1, 0, 0, 0, 1.8, 1.1, 3, 2.2)
+mesh = SubResource("PlaneMesh_0n2sx")
+surface_material_override/0 = SubResource("StandardMaterial3D_foe35")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ceiling/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_1nm2h")
+
+[node name="Fences" type="Node3D" parent="."]
+
+[node name="structure-tall2" parent="Fences" instance=ExtResource("23_7ahgu")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 2.9, 0, -12.4)
+
+[node name="structure-short2" parent="Fences" instance=ExtResource("24_sy1qj")]
+transform = Transform3D(-0.333756, -0.114252, -0.93571, -0.70252, 0.692012, 0.166084, 0.628547, 0.712787, -0.311228, 11.9, 0, -4.4)
+
+[node name="structure-tall3" parent="Fences" instance=ExtResource("23_7ahgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 0, -0.3)
+
+[node name="structure-short3" parent="Fences" instance=ExtResource("24_sy1qj")]
+transform = Transform3D(-0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173648, -1.1, 0, -3.3)
+
+[node name="structure-short4" parent="Fences" instance=ExtResource("24_sy1qj")]
+transform = Transform3D(0.130437, -0.79329, 0.594709, -0.486177, 0.471587, 0.735689, -0.864071, -0.385094, -0.324167, 2.3, -0.1, -4.3)
+
+[node name="Robots" type="Node3D" parent="."]
+
+[node name="Robot1" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -1, 0.1, -11.4)
+
+[node name="Robot2" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(-0.984808, 0, -0.173649, 0, 1, 0, 0.173649, 0, -0.984808, 13.7125, 0.1, -10.3)
+
+[node name="Robot3" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(-0.939692, 0, -0.342021, 0, 1, 0, 0.342021, 0, -0.939692, 6.8, 0.1, -10.7)
+
+[node name="Robot4" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -1.6, 0.1, -7)
+
+[node name="Robot5" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 7.2, 0.1, -0.899999)
+
+[node name="Robot6" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(-0.342021, 0, 0.939692, 0, 1, 0, -0.939692, 0, -0.342021, 13.6, 0.1, -3)
+
+[node name="Robot7" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -1.7, 0.1, -2.7)
+
+[node name="Robot8" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(-0.173649, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173649, 2.4, 0.1, 3.2)
+
+[node name="Robot9" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 7.4, 0.1, -5)
+
+[node name="Robot10" parent="Robots" instance=ExtResource("25_lagtu")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 3, 0.1, -7.7)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("26_uj2v4")
+
+[node name="PanelContainer" type="PanelContainer" parent="GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2j7jp")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverScreen/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Rows" type="VBoxContainer" parent="GameOverScreen/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 320
+
+[node name="Title" type="Label" parent="GameOverScreen/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverScreen/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="Row2" type="VBoxContainer" parent="GameOverScreen/PanelContainer/MarginContainer/Rows/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Restart" type="Button" parent="GameOverScreen/PanelContainer/MarginContainer/Rows/CenterContainer/Row2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "  Retry  "
+
+[node name="Quit" type="Button" parent="GameOverScreen/PanelContainer/MarginContainer/Rows/CenterContainer/Row2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "  Quit  "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_cvjpx")
+volume_db = -30.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="GameOverScreen/PanelContainer/MarginContainer/Rows/CenterContainer/Row2/Restart" to="GameOverScreen" method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverScreen/PanelContainer/MarginContainer/Rows/CenterContainer/Row2/Quit" to="GameOverScreen" method="_on_quit_pressed"]

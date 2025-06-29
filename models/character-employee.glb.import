@@ -5436,11 +5436,9 @@ _subresources={
 "rest_pose/external_animation_library": null
 },
 "PATH:character-employee/Skeleton3D/body-mesh": {
-"generate/physics": true,
 "physics/shape_type": 3
 },
 "PATH:character-employee/Skeleton3D/head-mesh": {
-"generate/physics": true,
 "physics/shape_type": 3
 }
 }

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvnikynmc4q7v"]
+
+[ext_resource type="PackedScene" uid="uid://qivn8t8qi6lq" path="res://models/robot-arm-b.glb" id="1_dncgl"]
+
+[node name="robot-arm-b2" instance=ExtResource("1_dncgl")]
+
+[node name="element-b" parent="robot-arm-b/element-a" index="0"]
+transform = Transform3D(0.748551, -0.35597, 0.559426, 0.407129, 0.912662, 0.0359727, -0.523372, 0.200831, 0.828099, 0, 0.3, -1.22725e-14)
+
+[node name="element-c" parent="robot-arm-b/element-a/element-b" index="0"]
+transform = Transform3D(0.533047, -0.833347, 0.146267, -0.295759, -0.345496, -0.890595, 0.792709, 0.43147, -0.430635, -1.49012e-08, 0.6, 9.31323e-09)
+
+[node name="element-e" parent="robot-arm-b/element-a/element-b/element-c/element-d" index="0"]
+transform = Transform3D(0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 0, 0, 1, 0, 0.6, -1.22725e-14)

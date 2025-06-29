@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://btn55w5hjjsaa"]
+
+[ext_resource type="Script" path="res://robot.gd" id="1_8d3ac"]
+[ext_resource type="PackedScene" uid="uid://04a6w7umgkr8" path="res://models/blaster-o.glb" id="2_sde58"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gftrt"]
+height = 0.2
+radius = 0.3
+
+[node name="Robot" type="Area3D"]
+script = ExtResource("1_8d3ac")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_gftrt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="blaster-o2" parent="MeshInstance3D" instance=ExtResource("2_sde58")]
+transform = Transform3D(-3.0598e-08, -0.8, 0, 0.7, -3.49691e-08, 0, 0, 0, 0.8, 0, 0, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

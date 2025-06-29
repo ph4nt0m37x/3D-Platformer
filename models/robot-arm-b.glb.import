@@ -31,6 +31,37 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:robot-arm-b": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:robot-arm-b/element-a": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:robot-arm-b/element-a/element-b": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:robot-arm-b/element-a/element-b/element-c": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:robot-arm-b/element-a/element-b/element-c/element-d": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:robot-arm-b/element-a/element-b/element-c/element-d/element-e": {
+"generate/physics": true,
+"physics/shape_type": 0
+},
+"PATH:robot-arm-b/element-a/element-b/element-c/element-d/element-e/element-f": {
+"generate/physics": true,
+"physics/shape_type": 0
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -1,2 +1,2 @@
 # 3D-Platformer
- A park mini-game in Godot.
+ A factory mini-game in Godot.

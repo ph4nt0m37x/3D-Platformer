@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b8kpaca2pk8rk"
-path="res://.godot/imported/box-large.glb-95a567b066a89a53f01d3e3579fc7a50.scn"
+uid="uid://d6dkv0itneuw"
+path="res://.godot/imported/structure-short.glb-7c589c0348b354399650669c57bf3f0f.scn"
 
 [deps]
 
-source_file="res://models/box-large.glb"
-dest_files=["res://.godot/imported/box-large.glb-95a567b066a89a53f01d3e3579fc7a50.scn"]
+source_file="res://models/structure-short.glb"
+dest_files=["res://.godot/imported/structure-short.glb-7c589c0348b354399650669c57bf3f0f.scn"]
 
 [params]
 
@@ -33,9 +33,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:box-large": {
+"PATH:structure-short": {
 "generate/physics": true,
-"physics/shape_type": 0
+"physics/shape_type": 1
 }
 }
 }

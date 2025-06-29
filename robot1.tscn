@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://jfgvyvu231h8"]
+
+[ext_resource type="PackedScene" uid="uid://pp0ut8ypgy5y" path="res://models/robot-arm-a.glb" id="1_thmtc"]
+
+[node name="robot-arm-a2" instance=ExtResource("1_thmtc")]
+
+[node name="element-a" parent="robot-arm-a" index="0"]
+transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, 0, 0.3, 1.44382e-15)
+
+[node name="element-b" parent="robot-arm-a/element-a" index="0"]
+transform = Transform3D(0.866025, 0, 0.5, 0.17101, 0.939693, -0.296198, -0.469846, 0.34202, 0.813798, 0, 0.3, -1.22725e-14)
+
+[node name="element-c" parent="robot-arm-a/element-a/element-b" index="0"]
+transform = Transform3D(0.866025, -0.321394, 0.383022, 0, 0.766045, 0.642788, -0.5, -0.55667, 0.663414, 0, 0.6, -1.22725e-14)
+
+[node name="element-d" parent="robot-arm-a/element-a/element-b/element-c" index="0"]
+transform = Transform3D(0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 0, 0, 1, 0, 0.3, 1.22725e-14)
+
+[node name="element-e" parent="robot-arm-a/element-a/element-b/element-c/element-d" index="0"]
+transform = Transform3D(-0.324533, 0.482091, -0.813798, 0.482091, 0.824533, 0.296198, 0.813798, -0.296198, -0.5, 0, 0.6, -5.96046e-08)
+
+[node name="element-f" parent="robot-arm-a/element-a/element-b/element-c/element-d/element-e" index="0"]
+transform = Transform3D(0.889864, -0.438097, -0.12733, 0.154299, 0.551647, -0.819681, 0.429341, 0.709758, 0.558489, 0, 0.1, 0)
+
+[node name="claw-a" parent="robot-arm-a/element-a/element-b/element-c/element-d/element-e/element-f" index="0"]
+transform = Transform3D(0.960108, -0.0836582, -0.266822, -0.1558, 0.632327, -0.758873, 0.232205, 0.770171, 0.594068, 0.175, 0.5, 7.45058e-08)
