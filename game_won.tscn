@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1eav6jexf1po"]
+[gd_scene load_steps=3 format=3 uid="uid://cd11iqpwt07d6"]
 
-[ext_resource type="Script" path="res://game_over_screen.gd" id="1_yi8ve"]
+[ext_resource type="Script" path="res://game_over_screen.gd" id="1_tc4ye"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j7jp"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.858824, 0.862745, 0.313726, 1)
 
-[node name="GameOverScreen" type="CanvasLayer"]
-script = ExtResource("1_yi8ve")
+[node name="GameWon" type="CanvasLayer"]
+script = ExtResource("1_tc4ye")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -23,6 +23,9 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
 [node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 320
@@ -30,10 +33,10 @@ theme_override_constants/separation = 320
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/Rows"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "GAME OVER"
+text = "You saved all the robots,
+ good job!"
 horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
 layout_mode = 2
